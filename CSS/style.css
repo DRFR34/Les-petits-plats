@@ -1,0 +1,96 @@
+@import url(./filters.css);
+@import url(./searchBox.css);
+@import url(./cards.css);
+
+
+
+/* == Global */
+
+
+
+:root {
+
+    /* -- fonts */
+    --font-fam-Main : 'Manrope', sans-serif;
+    ----font-fam-secondary : 'Anton',sans-serif; 
+    --font-sz-M : 14px;
+    --font-sz-S: 12px;
+    --font-sz-XS: 10px;
+
+    /* -- colors */
+    --color-semi-dark: #7A7A7A;
+    --color-active:#FFD15B;
+    --color-bg-light: #EDEDED;
+    --color-darker:#1B1B1B;  
+    --color-lighter: #ffffff;
+
+    /* -- misc. */
+    --shadow-1: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   
+}
+
+* {
+    /* font-family: 'Manrope', sans-serif; */
+    font-family: var(--font-fam-Main);
+    font-weight: 400;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;    
+}
+
+body {
+    width: 1440px;
+    margin: 0 auto;
+}
+
+main {
+    padding: 0 100px;
+    background-color: var(--color-bg-light);
+}
+
+h1, h2 {
+    /* font-family: 'Anton',sans-serif;     */
+    font-family: var(----font-fam-secondary);
+}
+h1, h3 {
+    text-transform: uppercase;
+}
+
+.invisible {
+    font-size: 0;
+    color: transparent;
+    display: block;
+}
+
+/* == header */
+
+header {
+    position: relative;
+    height: 668px;
+    background-image: url(../Assets/headerImg.png) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 50px 70px;
+}
+
+
+#logo {
+    width: 207px;
+    height: 26px;
+
+
+}
+
+h1 {
+    padding: 160px 0 30px 0 ;
+    font-size: 44px;
+    color: var(--color-active);
+    text-align: center;   
+}
+
+
+
+
+
+
+

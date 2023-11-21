@@ -1,0 +1,104 @@
+/* == Cards */
+
+/* -- cards grid */
+
+#recipesCardsGrid {
+   
+    /* padding: 100px; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* background-color: cadetblue; */
+    background-color: var(--color-bg-light);
+}
+
+
+/* -- cards */
+
+.recipeCard {
+    position: relative;
+    width: 380px;
+    height: 730px;
+    border-radius: 20px;
+    background-color:var(--color-lighter);
+    box-shadow: var(--shadow-1);
+}
+
+.preparationTimeBox {
+    z-index: 2;
+    position: absolute;
+    top: 22px;
+    right: 30px;
+    width: 65px;
+    height: 26px;
+    border-radius: 21px;
+    background-color: var(--color-active);
+    text-align: center;
+    line-height: 26px;
+    font-size: 12px;
+
+}
+
+.recipePhotoBox {
+    width: 380px;
+    height: 253px;
+    border-radius: 20px 20px 0 0 ;
+    overflow: hidden;/
+}
+
+.recipePhoto {
+    transform: translateY(-27%);
+    width: 100%;
+}
+
+.recipeContent {
+    padding:  28px 28px;
+}
+
+.recipeTitle {
+    padding: 0 0 25px 0;
+    font-size: 18px;
+    font-weight: 500;
+    /* font-family: 'Anton', sans-serif; */
+
+}
+
+.recipeHowToTitle,
+.recipeIngredientsTitle {
+    padding: 0 0 20px 0;
+    color: var(--grey-color);
+    /* color: red; */
+    font-size: 12px;
+    font-weight: 700;
+    /* text-transform: uppercase; */
+    letter-spacing: 1px;
+}
+
+.recipeHowToText {
+    padding: 0 0 0px 0;
+    height: 110px;
+    font-size: 14px;
+
+}
+.recipeIngredientsList {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+.recipeIngredientItem {
+    padding:0 0 30px 0 ;
+    display: flex;
+    flex-direction: column;
+}
+
+.ingredient {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.ingredientQuantity {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--grey-color);
+}

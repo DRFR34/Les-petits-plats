@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les petits plats</title>
+    <link rel="icon" type="image/x-icon" href="./Assets/favicon-32x32.png">
+    <link rel="icon" href="./Assets/icons/favicon-32x32.png" />
+    <!-- <script src="https://kit.fontawesome.com/64a15eb5cd.js"></script>  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/style.css">
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="./Assets/logo.png" alt="Logo Les petits plats">
+        <h1 id="heroH1">
+            cherchez parmi plus de 1500 recettes <br> du quotidien, simples et délicieuses
+        </h1>
+        <div id="searchBox">
+
+            <label class="invisible" for="searchInput">saisissez votre recherche, par exemple le nom d'une recette ou
+                d'un ingrédient</label>
+            <input id="searchInput" type="text" placeholder="Rechercher une recette, un ingrédient, ...">
+            <span class="closeOrDeleteTag">&#x2A2F;</span>
+            <div id="searchIconBox">
+                <img id="searchIconWhite" src="./Assets/icons/searchIconWhite.svg" alt="">
+                <img id="searchIconBlack" src="./Assets/icons/searchIconBlack.svg" alt="">
+            </div>
+
+        </div>
+    </header>
+    <main>
+        <div id="filtersSection">
+
+            <div id="filtersBanner">
+
+                <div id="ingredientsDropdown" class="filterDropdown">
+                    <div class="dropdownSymbol">></div>
+                    <h2>Ingrédients</h2>
+
+                    <label for="#ingredientsSearchInput" class="invisible filterSearchInputLabel"> saisissez
+                        l'ingrédient recherché
+                        <input type="text" id="ingredientsSearchInput" class="dropdownSearchInput"
+                            placeholder="Rechercher">
+                        <span class="closeOrDeleteTag">&#x2A2F;</span>
+                        <img class="filterSearchIcon" src="./Assets/icons/filterSearchIcon.svg" alt="">
+                    </label>
+                    <ul class="filterDropdownList">
+                        <li class="filterDropdownItem">carotte</li>
+                        <li class="filterDropdownItem isFilterCriteria">citron</li>
+                        <li class="filterDropdownItem">courge</li>
+                        <li class="filterDropdownItem">poivron</li>
+                        <li class="filterDropdownItem">poireau</li>
+                        <li class="filterDropdownItem">orange</li>
+                        <li class="filterDropdownItem">gruyère</li>
+                    </ul>
+                </div>
+                <div id="battersDropdown" class="filterDropdown">
+                    <div class="dropdownSymbol">></div>
+                    <h2>Appareils</h2>
+
+                    <label for="#battersSearchInput" class="invisible filterSearchInputLabel"> saisissez l'ingrédient
+                        recherché
+                        <input type="text" id="battersSearchInput" class="dropdownSearchInput" placeholder="Rechercher">
+                        <span class="closeOrDeleteTag">&#x2A2F;</span>
+                        <img class="filterSearchIcon" src="./Assets/icons/filterSearchIcon.svg" alt="">
+                    </label>
+                    <ul class="filterDropdownList">
+                        <li class="filterDropdownItem">appareil1</li>
+                        <li class="filterDropdownItem">appareil2</li>
+                        <li class="filterDropdownItem">appareil3</li>
+                        <li class="filterDropdownItem isFilterCriteria">appareil4</li>
+                        <li class="filterDropdownItem">appareil5</li>
+                    </ul>
+                </div>
+                <div id="utensilsDropdown" class="filterDropdown">
+                    <!-- <div class="dropdownSymbol">&#10217;</div> -->
+                    <div class="dropdownSymbol">></div>
+                    <h2>Ustensiles</h2>
+
+                    <label for="#utensilsSearchInput" class="invisible filterSearchInputLabel"> saisissez l'ingrédient
+                        recherché
+                        <input type="text" id="utensilsSearchInput" class="dropdownSearchInput"
+                            placeholder="Rechercher">
+                        <span class="closeOrDeleteTag">&#x2A2F;</span>
+                        <img class="filterSearchIcon" src="./Assets/icons/filterSearchIcon.svg" alt="">
+                    </label>
+
+                    <ul class="filterDropdownList">
+                        <li class="filterDropdownItem isFilterCriteria">ustensile1</li>
+                        <li class="filterDropdownItem">ustensile2</li>
+                        <li class="filterDropdownItem">ustensile3</li>
+                    </ul>
+                </div>
+
+
+                <div class="foundRecipesCount">
+                    <span class="recipesNb">1500</span>
+                    <span>recettes</span>
+                </div>
+            </div>
+
+            <div id="searchedWordsGrid">
+                <div class="searchedWordTag">
+                    <span class="searchedWord">MotClé 1</span>
+                    <span class="closeOrDeleteTag">&#x2A2F;</span>
+                </div>
+                <div class="searchedWordTag">
+                    <span class="searchedWord">MotClé 2</span>
+                    <span class="closeOrDeleteTag">&#x2A2F;</span>
+                </div>
+                <div class="searchedWordTag">
+                    <span class="searchedWord">MotClé 3</span>
+                    <span class="closeOrDeleteTag">&#x2A2F;</span>
+                </div>
+                <div class="searchedWordTag">
+                    <span class="searchedWord">MotClé 4</span>
+                    <span class="closeOrDeleteTag">&#x2A2F;</span>
+                </div>
+                <div class="searchedWordTag">
+                    <span class="searchedWord">MotClé 5</span>
+                    <span class="closeOrDeleteTag">&#x2A2F;</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="recipesCardsGrid">
+
+            <article class="recipeCard">
+                <span class="preparationTimeBox">00min</span>
+                <div class="recipePhotoBox">
+                    <img class="recipePhoto" src="./Assets/dishes_photos/Recette01.jpg" alt="Photo du plat">
+                </div>
+
+                <div class="recipeContent">
+
+                    <h2 class="recipeTitle">Titre recette</h2>
+
+                    <h3 class="recipeHowToTitle">recette</h3>
+                    <p class="recipeHowToText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non cupiditate
+                        quasi incidunt at! Vel provident sint obcaecati voluptatum amet impedit recusandae doloribus
+                        molestias pariatur corporis?.</p>
+
+                    <h3 class="recipeIngredientsTitle">ingrédients</h3>
+                    <ul class="recipeIngredientsList">
+                        <li class="recipeIngredientItem">
+                            <span class="ingredient">ingrédient</span>
+                            <span class="ingredientQuantity">Quantité</span>
+                        </li>
+                        <li class="recipeIngredientItem">
+                            <span class="ingredient">ingrédient</span>
+                            <span class="ingredientQuantity">Quantité</span>
+                        </li>
+                        <li class="recipeIngredientItem">
+                            <span class="ingredient">ingrédient</span>
+                            <span class="ingredientQuantity">Quantité</span>
+                        </li>
+                        <li class="recipeIngredientItem">
+                            <span class="ingredient">ingrédient</span>
+                            <span class="ingredientQuantity">Quantité</span>
+                        </li>
+                        <li class="recipeIngredientItem">
+                            <span class="ingredient">ingrédient</span>
+                            <span class="ingredientQuantity">Quantité</span>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </article>
+
+            <article class="recipeCard">
+                <span class="preparationTimeBox">00min</span>
+                <div class="recipePhotoBox">
+                    <img class="recipePhoto" src="./Assets/dishes_photos/Recette02.jpg" alt="Photo du plat">
+                </div>
+
+                <div class="recipeContent">
+
+                    <h2 class="recipeTitle">Titre recette</h2>
+
+                    <h3 class="recipeHowToTitle">recette</h3>
+                    <p class="recipeHowToText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non cupiditate
+                        quasi incidunt at! Vel provident sint obcaecati voluptatum amet impedit recusandae doloribus
+                        molestias pariatur corporis?.</p>
+
+                    <h3 class="recipeIngredientsTitle">ingrédients</h3>
+                    <ul class="recipeIngredientsList">
+                        <li class="recipeIngredientItem">
+                            <span class="ingredient">ingrédient</span>
+                            <span class="ingredientQuantity">Quantité</span>
+                        </li>
+                        <li class="recipeIngredientItem">
+                            <span class="ingredient">ingrédient</span>
+                            <span class="ingredientQuantity">Quantité</span>
+                        </li>
+                        <li class="recipeIngredientItem">
+                            <span class="ingredient">ingrédient</span>
+                            <span class="ingredientQuantity">Quantité</span>
+                        </li>
+                        <li class="recipeIngredientItem">
+                            <span class="ingredient">ingrédient</span>
+                            <span class="ingredientQuantity">Quantité</span>
+                        </li>
+                        <li class="recipeIngredientItem">
+                            <span class="ingredient">ingrédient</span>
+                            <span class="ingredientQuantity">Quantité</span>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </article>
+
+            <article class="recipeCard">
+                <span class="preparationTimeBox">00min</span>
+                <div class="recipePhotoBox">
+                    <img class="recipePhoto" src="./Assets/dishes_photos/Recette03.jpg" alt="Photo du plat">
+                </div>
+
+                <div class="recipeContent">
+
+                    <h2 class="recipeTitle">Titre recette</h2>
+
+                    <h3 class="recipeHowToTitle">recette</h3>
+                    <p class="recipeHowToText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non cupiditate
+                        quasi incidunt at! Vel provident sint obcaecati voluptatum amet impedit recusandae doloribus
+                        molestias pariatur corporis?.</p>
+
+                    <h3 class="recipeIngredientsTitle">ingrédients</h3>
+                    <ul class="recipeIngredientsList">
+                        <li class="recipeIngredientItem">
+                            <span class="ingredient">ingrédient</span>
+                            <span class="ingredientQuantity">Quantité</span>
+                        </li>
+                        <li class="recipeIngredientItem">
+                            <span class="ingredient">ingrédient</span>
+                            <span class="ingredientQuantity">Quantité</span>
+                        </li>
+                        <li class="recipeIngredientItem">
+                            <span class="ingredient">ingrédient</span>
+                            <span class="ingredientQuantity">Quantité</span>
+                        </li>
+                        <li class="recipeIngredientItem">
+                            <span class="ingredient">ingrédient</span>
+                            <span class="ingredientQuantity">Quantité</span>
+                        </li>
+                        <li class="recipeIngredientItem">
+                            <span class="ingredient">ingrédient</span>
+                            <span class="ingredientQuantity">Quantité</span>
+                        </li>
+
+                    </ul>
+
+                </div>
+            </article>
+
+
+        </div>
+
+
+
+
+
+    </main>
+
+</body>
+
+</html>
