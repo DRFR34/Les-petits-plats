@@ -24,9 +24,9 @@
         </h1>
         <div id="searchBox">
 
-            <label class="invisible" for="searchInput">saisissez votre recherche, par exemple le nom d'une recette ou
+            <label class="invisible" for="mainSearchInput">saisissez votre recherche, par exemple le nom d'une recette ou
                 d'un ingrédient</label>
-            <input id="searchInput" type="text" placeholder="Rechercher une recette, un ingrédient, ...">
+            <input id="mainSearchInput" type="text" placeholder="Rechercher une recette, un ingrédient, ...">
             <span class="closeOrDeleteTag">&#x2A2F;</span>
             <div id="searchIconBox">
                 <img id="searchIconWhite" src="./Assets/icons/searchIconWhite.svg" alt="">
@@ -116,13 +116,18 @@
             </div>
         </div>
 
-        <div id="recipesCardsGrid">
+        <div id="recipesCardsGrid">            
         </div>
+        <div id="nothingFoundDiv">Aucune recette trouvée</div>
     </main>
 
 </body>
 
 <script src="./JS/index.js" defer></script>
-<script src="./JS/cardTemplate.js" defer></script>
+<script src="./JS/utils/mainFilter.js" defer></script>
+<script src="js/utils/normalizeString.js" defer></script>
+<script src="drafts/nativeSearch.js" defer></script>
+<script src="drafts/functionalMainSearch.js" defer></script>
+<script src="data/recipes.js" defer></script>
 
 </html>
