@@ -19,7 +19,7 @@
     color: var(--color-semi-dark);
 }
 
-#searchInput {
+#mainSearchInput {
     width: 954px;
     height: 72px;
     border-radius: 11px;
