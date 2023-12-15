@@ -1,4 +1,11 @@
 
+// ! base v3
+// ! base v3
+// ! base v3
+// ! base v3
+
+
+
 /** Release Note
  *  Done :  
  *      + deduplicate items in  dropdowns lists
@@ -11,9 +18,11 @@
 
 
 "use strict";
+
 const ingredientsSet = new Set;
 const appliancesSet = new Set;
 const ustensilsSet = new Set;
+
 /**
  *  + fetches data from a JSON file (Asynchronous)
  *  + calls displayData() with the recipes data.Description placeholder
@@ -89,12 +98,12 @@ class RecipeCard {
     }
 }
 
-async function InsertRecipeCardInDom(allRecipes) {
+async function InsertRecipeCardInDom(nRecipes) {
     const recipesCardsGrid = document.querySelector("#recipesCardsGrid");
-    recipesCardsGrid.innerHTML = (``)
+    recipesCardsGrid.innerHTML = (``);
     let totalRecipes = 0;
 
-    allRecipes.forEach((recipe) => {
+    nRecipes.forEach((recipe) => {
         totalRecipes += 1;
 
         const recipeCard = new RecipeCard(recipe);
@@ -109,11 +118,8 @@ async function InsertRecipeCardInDom(allRecipes) {
     addAppliancesInDropdownList();
     addIngredientsInDropdownList();
     addUstensilsInDropdownList();
+    dropdownItemsSelecting();
 }
-
-
-
-
 
 getRecipesData();
 
@@ -121,24 +127,35 @@ getRecipesData();
 
 function addAppliancesInDropdownList() {
     const filterAppliancesList = document.querySelector('#filterAppliancesList');
+    filterAppliancesList.innerHTML = (``);
+   
+    // while (filterAppliancesList.firstChild) {
+    //     filterAppliancesList.removeChild(filterAppliancesList.lastChild);
+    // }
+    // filterAppliancesList.length
+    // filterAppliancesList.removeChild();
+    console.log('[...appliancesSet]', [...appliancesSet]);
     [...appliancesSet].sort().forEach((appliance) => {
         const filterApplianceItem = document.createElement('li');
         filterApplianceItem.className = 'filterDropdownItem';
         filterApplianceItem.innerText = `${appliance}`;
         filterAppliancesList.appendChild(filterApplianceItem);
     });
-}
 
+    console.log('addAppliancesInDropdownList()->filterAppliancesList:',filterAppliancesList);
+}
 
 
 function addIngredientsInDropdownList() {
     const filterIngredientsList = document.querySelector('#filterIngredientsList');
+    filterIngredientsList.innerHTML = (``);
     [...ingredientsSet].sort().forEach((ingredient) => {
         const filterIngredientItem = document.createElement('li');
         filterIngredientItem.className = 'filterDropdownItem';
         filterIngredientItem.innerText = `${ingredient}`;
         filterIngredientsList.appendChild(filterIngredientItem);
     });
+    console.log('addIngredientsInDropdownList()->filterIngredientsList:',filterIngredientsList);
 }
 
 /**
@@ -150,6 +167,8 @@ function addIngredientsInDropdownList() {
  */
 function addUstensilsInDropdownList() {
     const filterUstensilsList = document.querySelector('#filterUstensilsList');
+    filterUstensilsList.innerHTML = (``);
+
     /** 
      * transform ustensilsSet in array and sort
      * @param {String} - ustensilItem
@@ -163,4 +182,13 @@ function addUstensilsInDropdownList() {
 }
 
 
+function deleteMainSearch() {
+    const deleteMainSearch = document.querySelector('#deleteMainSearch');
+    const mainSearchInput = document.querySelector('#mainSearchInput');
 
+    deleteMainSearch.addEventListener('click', () => {
+        mainSearchInput.value = '';
+        refreshWithNewCriterias();
+    });
+}
+deleteMainSearch();

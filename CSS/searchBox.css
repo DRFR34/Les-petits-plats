@@ -8,7 +8,7 @@
 
 }
 
-#searchBox .closeOrDeleteTag {
+#searchBox .deleteSearch {
     position: absolute;
     /* top: 50%; */
     right: 80px;

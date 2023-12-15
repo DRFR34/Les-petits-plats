@@ -89,6 +89,15 @@ h1 {
 }
 
 
+#nothingFoundDiv {
+    display: none;
+}
+
+#nothingFoundDiv.isVisible{
+    display: block;
+    text-align: center;
+    font-size: 50px;
+}
 
 
 

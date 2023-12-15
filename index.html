@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -27,7 +27,7 @@
             <label class="invisible" for="mainSearchInput">saisissez votre recherche, par exemple le nom d'une recette ou
                 d'un ingrédient</label>
             <input id="mainSearchInput" type="text" placeholder="Rechercher une recette, un ingrédient, ...">
-            <span class="closeOrDeleteTag">&#x2A2F;</span>
+            <span id="deleteMainSearch" class="deleteSearch">&#x2A2F;</span>
             <div id="searchIconBox">
                 <img id="searchIconWhite" src="./Assets/icons/searchIconWhite.svg" alt="">
                 <img id="searchIconBlack" src="./Assets/icons/searchIconBlack.svg" alt="">
@@ -48,7 +48,7 @@
                         l'ingrédient recherché
                         <input type="text" id="ingredientsSearchInput" class="dropdownSearchInput"
                             placeholder="Rechercher">
-                        <span class="closeOrDeleteTag">&#x2A2F;</span>
+                        <span class="deleteSearch">&#x2A2F;</span>
                         <img class="filterSearchIcon" src="./Assets/icons/filterSearchIcon.svg" alt="">
                     </label>
                     <ul id="filterIngredientsList" class="filterDropdownList">
@@ -62,7 +62,7 @@
                         recherché
                         <input type="text" id="appliancesSearchInput" class="dropdownSearchInput"
                             placeholder="Rechercher">
-                        <span class="closeOrDeleteTag">&#x2A2F;</span>
+                        <span class="deleteSearch">&#x2A2F;</span>
                         <img class="filterSearchIcon" src="./Assets/icons/filterSearchIcon.svg" alt="">
                     </label>
                     <ul id="filterAppliancesList" class="filterDropdownList">
@@ -77,7 +77,7 @@
                         recherché
                         <input type="text" id="ustensilsSearchInput" class="dropdownSearchInput"
                             placeholder="Rechercher">
-                        <span class="closeOrDeleteTag">&#x2A2F;</span>
+                        <span class="deleteSearch">&#x2A2F;</span>
                         <img class="filterSearchIcon" src="./Assets/icons/filterSearchIcon.svg" alt="">
                     </label>
 
@@ -93,7 +93,7 @@
             </div>
 
             <div id="searchedWordsGrid">
-                <div class="searchedWordTag">
+                <!-- <div class="searchedWordTag">
                     <span class="searchedWord">MotClé 1</span>
                     <span class="closeOrDeleteTag">&#x2A2F;</span>
                 </div>
@@ -112,7 +112,7 @@
                 <div class="searchedWordTag">
                     <span class="searchedWord">MotClé 5</span>
                     <span class="closeOrDeleteTag">&#x2A2F;</span>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -125,9 +125,13 @@
 
 <script src="./JS/index.js" defer></script>
 <script src="./JS/utils/mainFilter.js" defer></script>
+<script src="./JS/utils/tagsProcessing.js" defer></script>
 <script src="js/utils/normalizeString.js" defer></script>
-<script src="drafts/nativeSearch.js" defer></script>
-<script src="drafts/functionalMainSearch.js" defer></script>
+<script src="js/utils/functionalMainSearch.js" defer></script>
+<!-- <script src="drafts/nativeSearch.js" defer></script>
+<script src="drafts/functionalMainSearch.js" defer></script> -->
 <script src="data/recipes.js" defer></script>
+
+<!-- <script src="data/recipes.js" defer></script> -->
 
 </html>
