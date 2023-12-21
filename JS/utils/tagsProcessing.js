@@ -1,46 +1,4 @@
-// const tag =`  
-const seclectedTagsSet = new Set;
-const searchedWordsGrid = document.querySelector("#searchedWordsGrid");
-
-//== Functions
-// eslint-disable-next-line no-unused-vars
-// function dropdownItemsSelecting() {
-//     const filterDropdownItems = document.querySelectorAll('.filterDropdownItem');
-//             console.log('filterDropdownItems :',filterDropdownItems);
-//             filterDropdownItems.forEach(filterDropdownItem => {
-//                 filterDropdownItem.addEventListener('click', (event) => {
-
-
-//                 // event.target.classList.add('isFilterCriteria');
-//                 // event.target.parentElement.prepend(event.target);
-
-
-//             seclectedTagsSet.add(event.target.textContent);
-
-//              //  reinit grid
-//             searchedWordsGrid.innerHTML =``;
-
-//             seclectedTagsSet.forEach((seclectedTag) => {
-//                 createTag(seclectedTag);
-
-
-
-//                 filterDropdownItems.forEach (filterDropdownItem => {
-//                     if(normalizeString(filterDropdownItem.textContent) === normalizeString(seclectedTag)) {
-//                         filterDropdownItem.classList.add('isFilterCriteria');
-//                         filterDropdownItem.parentElement.prepend(event.target);
-
-//                         console.log('filterDropdownItem.parentElement:',filterDropdownItem.parentElement);
-
-//                     }
-//                 });
-
-
-//             });
-
-//         });
-//     });
-// }
+//== Functions definitions
 
 // eslint-disable-next-line no-unused-vars
 
@@ -57,50 +15,51 @@ const searchedWordsGrid = document.querySelector("#searchedWordsGrid");
 function dropdownItemsSelecting() {
     const filterDropdownItems = document.querySelectorAll('.filterDropdownItem');
     // console.log('filterDropdownItems :', filterDropdownItems);
+
+    // Places Listeners on dropdowns' <li>s
     filterDropdownItems.forEach(filterDropdownItem => {
         filterDropdownItem.addEventListener('click', (event) => {
             //  Store a reference to the clicked item
             const clickedItem = event.target;
 
-            seclectedTagsSet.add(clickedItem.textContent);
-               console.log( 'dropdownItemsSelecting() ->seclectedTagsSet: ', seclectedTagsSet);
-            //  refresh cards grid
+            addItemInTagSet(clickedItem);
+
             refreshWithNewCriterias();
 
-            //  reinit grid
+
+            //  clear searchedWordsGrid
             searchedWordsGrid.innerHTML = ``;
 
-            seclectedTagsSet.forEach((seclectedTag) => {
-                createTag(seclectedTag);
+            //  refresh cards grid and dropdowns
+            selectedTagsSet.forEach((selectedTag) => {
+                createTag(selectedTag);
             });
 
-            seclectedTagsSet.forEach((seclectedTag) => {
+            selectedTagsSet.forEach((selectedTag) => {
                 const filterIngredientsList = document.querySelectorAll('#filterIngredientsList .filterDropdownItem');
 
                 const filterAppliancesList = document.querySelectorAll('#filterAppliancesList .filterDropdownItem');
 
                 const filterUstensilsList = document.querySelectorAll('#filterUstensilsList .filterDropdownItem');
 
-                dropdownItemsActivation(filterIngredientsList, seclectedTag);
-                dropdownItemsActivation(filterAppliancesList, seclectedTag);
-                dropdownItemsActivation(filterUstensilsList, seclectedTag);
+                dropdownItemsActivation(filterIngredientsList, selectedTag);
+                dropdownItemsActivation(filterAppliancesList, selectedTag);
+                dropdownItemsActivation(filterUstensilsList, selectedTag);
                 dropdownItemsDeselecting()
             });
         });
     });
 }
 
-function dropdownItemsActivation(filterItemsList, seclectedTag) {
+
+function dropdownItemsActivation(filterItemsList, selectedTag) {
     filterItemsList.forEach(item => {
-        if (normalizeString(item.textContent) === normalizeString(seclectedTag)) {
+        if (normalizeString(item.textContent) === normalizeString(selectedTag)) {
             item.classList.add('isFilterCriteria');
             item.parentElement.prepend(item);
         }
     });
 }
-
-
-
 
 
 /**
@@ -119,9 +78,10 @@ function createTag(filterDropdownItem) {
     closeTagListener()
 }
 
+
 /**
  * @modify : 
- *  seclectedTagsSet
+ *  selectedTagsSet
  * @calledBy 
  *  + tagProcessing()}
  * @calls : 
@@ -133,7 +93,8 @@ function closeTagListener() {
         tagCloseBtn.addEventListener('click', (event) => {
             let tagText = event.target.parentElement.querySelector('.searchedWord').textContent;
 
-            seclectedTagsSet.delete(tagText);
+            selectedTagsSet.delete(tagText);
+            // refreshWithNewCriterias();
             refreshWithNewCriterias();
 
             const filterDropdownItems = document.querySelectorAll('.filterDropdownItem');
@@ -151,6 +112,7 @@ function closeTagListener() {
 
 }
 
+
 function dropdownItemsDeselecting() {
     const DropdownItemsCloseBtns = document.querySelectorAll('.isFilterCriteria');
     console.log('DropdownItemsCloseBtns :', DropdownItemsCloseBtns);
@@ -160,54 +122,17 @@ function dropdownItemsDeselecting() {
             //  Store a reference to the clicked item
             const clickedItemCloseBtn = event.target;
 
-            seclectedTagsSet.delete(clickedItemCloseBtn.textContent);
+            selectedTagsSet.delete(clickedItemCloseBtn.textContent);
             //  refresh cards grid
+            // refreshWithNewCriterias();
             refreshWithNewCriterias();
 
             //  reinit grid
             searchedWordsGrid.innerHTML = ``;
 
-            seclectedTagsSet.forEach((seclectedTag) => {
-                createTag(seclectedTag);
+            selectedTagsSet.forEach((selectedTag) => {
+                createTag(selectedTag);
             });
-        });
-    });
-}
-
-function refreshWithNewCriterias() {
-    const mainSearchInput = document.querySelector('#mainSearchInput');
-    const recipesNb = document.querySelector('.recipesNb');
-    const nothingFound = document.querySelector('#nothingFoundDiv');
-    let mainSearchValue = normalizeString(mainSearchInput.value);
-
-    functionalMainSearch(mainSearchValue);
-    let dispalyedRecipes = document.querySelectorAll(".recipeCard");
-    // console.log('dispalyedRecipes :', dispalyedRecipes);
-
-    dispalyedRecipes.forEach((displayedRecipe) => {
-        seclectedTagsSet.forEach((seclectedTag) => {
-
-            // console.log('displayedRecipe.textContent:', displayedRecipe.textContent);
-
-            if (!normalizeString(displayedRecipe.textContent).includes(normalizeString(seclectedTag))) {
-                displayedRecipe.remove();
-                
-                // const recipesNb = document.querySelector('.recipesNb');
-                // const nothingFound = document.querySelector('#nothingFound');
-
-
-                let totalRecipes = recipesNb.textContent;
-                const noRecipes = 0;
-                totalRecipes -= 1;
-                if (totalRecipes > 0) {
-                    recipesNb.innerHTML = (`${totalRecipes}`);
-                    nothingFound.className = ('');
-                } else {
-                    recipesNb.innerHTML = (`${noRecipes}`);
-                    nothingFound.className = ('isVisible');
-
-                }
-            }
         });
     });
 }
@@ -234,3 +159,4 @@ function refreshItemListOrder(filterDropdownItem) {
     parentUlArray.forEach(item => parent.appendChild(item));
 
 }
+
