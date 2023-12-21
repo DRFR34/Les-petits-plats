@@ -1,29 +1,39 @@
 
-// ! base v3
-// ! base v3
-// ! base v3
-// ! base v3
-
-
-
-/** Release Note
- *  Done :  
- *      + deduplicate items in  dropdowns lists
- *      + A-B sorting of these items 
- *  ToDo :
- *      - place clicked items at the top of the list
- *      - use of the content of the items clicked in the filter
- * 
- */
+// ! base v5
+// ! base v5
 
 
 "use strict";
 
+// == Globlal Constants & Variables 
+
+// * DOM elements
+
+const mainSearchInput = document.querySelector('#mainSearchInput');
+const searchedWordsGrid = document.querySelector("#searchedWordsGrid");
+const ingredientsSearchInput = document.querySelector("#ingredientsSearchInput");
+const appliancesSearchInput = document.querySelector("#appliancesSearchInput");
+const ustensilsSearchInput = document.querySelector("#ustensilsSearchInput");
+
+
+// * data containers
+
 const ingredientsSet = new Set;
 const appliancesSet = new Set;
 const ustensilsSet = new Set;
+const selectedTagsSet = new Set;
+
+let mainSearchValue = new String;
+let ingredientsSearchValue = new String;
+let appliancesSearchValue = new String;
+let ustensilsSearchValue = new String;
+let mainSearchResultSet = [];
+let currentSearchSet = [];
+
 
 /**
+ * 
+ 
  *  + fetches data from a JSON file (Asynchronous)
  *  + calls displayData() with the recipes data.Description placeholder
  * 
@@ -43,62 +53,13 @@ async function getRecipesData() {
 
 }
 
-class RecipeCard {
-    constructor(recipe) {
-        const { id, image, name, servings, ingredients, time, description, appliance, ustensils } = recipe;
-        this.recipeCard = document.createElement('article');
-        this.recipeCard.className = 'recipeCard';
-        this.recipeCard.id = `${id}`;
-        this.recipeIngredientItem = document.createElement('li');
-        this.recipeIngredientItem.className = 'recipeIngredientItem';
-        this.recipeCard.innerHTML = ` 
-        <span class="preparationTimeBox">${time}min</span>
-        <div class="recipePhotoBox">
-            <img class="recipePhoto" src="./Assets/dishes_photos/${image}" alt="Photo du plat">
-        </div>
-        <div class="recipeContent">
-            <h2 class="recipeTitle">${name}</h2>
-            <h3 class="recipeHowToTitle">recette</h3>
-            <p class="recipeHowToText">${description}</p>
-            <h3 class="recipeIngredientsTitle">ingrédients</h3>
-            <ul class="recipeIngredientsList"></ul>
-        </div>          
-        `;
 
-        //  deduplicate appliances for dropdown list 
-        appliancesSet.add(appliance);
-
-
-        ingredients.forEach((ingredientItem) => {
-            const recipeIngredientsList = this.recipeCard.querySelector('.recipeIngredientsList')
-            const ingredient = ingredientItem.ingredient;
-            const quantity = ingredientItem.quantity;
-            const unit = ingredientItem.unit;
-            const recipeIngredientItem = document.createElement('li');
-            recipeIngredientItem.classList.add('recipeIngredientItem');
-            recipeIngredientItem.innerHTML = `
-                <span class="ingredient"> ${ingredient}</span>
-                <span class="ingredientQuantity">${quantity ? quantity : ""} ${unit ? unit : ""} </span>
-            `
-            recipeIngredientsList.appendChild(recipeIngredientItem);
-
-            //  deduplicate ingredients for dropdown list           
-            ingredientsSet.add(ingredient);
-        });
-
-        //  deduplicate ustensils for dropdown list 
-        ustensils.forEach((ustensilItem) => {
-            ustensilsSet.add(ustensilItem);
-        });
-
-
-
-
-        return this.recipeCard;
-    }
-}
-
+/**
+ * @param {Array} nRecipes - arrray of objects recipes 
+ * @return {Array}
+ */
 async function InsertRecipeCardInDom(nRecipes) {
+    // console.log('InsertRecipeCardInDom ->nRecipes :', nRecipes);
     const recipesCardsGrid = document.querySelector("#recipesCardsGrid");
     recipesCardsGrid.innerHTML = (``);
     let totalRecipes = 0;
@@ -115,9 +76,9 @@ async function InsertRecipeCardInDom(nRecipes) {
     const recipesNb = document.querySelector('.recipesNb');
     recipesNb.innerHTML = (`${totalRecipes}`)
 
-    addAppliancesInDropdownList();
-    addIngredientsInDropdownList();
-    addUstensilsInDropdownList();
+    addItemsInDropdownList('#filterIngredientsList', ingredientsSet);
+    addItemsInDropdownList('#filterAppliancesList', appliancesSet);
+    addItemsInDropdownList('#filterUstensilsList', ustensilsSet);
     dropdownItemsSelecting();
 }
 
@@ -125,70 +86,44 @@ getRecipesData();
 
 // == functions definitions
 
-function addAppliancesInDropdownList() {
-    const filterAppliancesList = document.querySelector('#filterAppliancesList');
-    filterAppliancesList.innerHTML = (``);
-   
-    // while (filterAppliancesList.firstChild) {
-    //     filterAppliancesList.removeChild(filterAppliancesList.lastChild);
-    // }
-    // filterAppliancesList.length
-    // filterAppliancesList.removeChild();
-    console.log('[...appliancesSet]', [...appliancesSet]);
-    [...appliancesSet].sort().forEach((appliance) => {
-        const filterApplianceItem = document.createElement('li');
-        filterApplianceItem.className = 'filterDropdownItem';
-        filterApplianceItem.innerText = `${appliance}`;
-        filterAppliancesList.appendChild(filterApplianceItem);
-    });
-
-    console.log('addAppliancesInDropdownList()->filterAppliancesList:',filterAppliancesList);
-}
-
-
-function addIngredientsInDropdownList() {
-    const filterIngredientsList = document.querySelector('#filterIngredientsList');
-    filterIngredientsList.innerHTML = (``);
-    [...ingredientsSet].sort().forEach((ingredient) => {
-        const filterIngredientItem = document.createElement('li');
-        filterIngredientItem.className = 'filterDropdownItem';
-        filterIngredientItem.innerText = `${ingredient}`;
-        filterIngredientsList.appendChild(filterIngredientItem);
-    });
-    console.log('addIngredientsInDropdownList()->filterIngredientsList:',filterIngredientsList);
-}
-
 /**
- *  + sort by A-B ustensilsSet, and 
- *  + insert each ustensil in the ustensils dropdown
- * @calledBy {fn} - fn
- * @param {none}
- * @returns {HTMLElements} - filterustensilItem
+ *  + transforms itemsSets in arrays and sorts them
+ *  + injects each item in DOM
+ * @param {String} listId 
+ * @param {Set} - itemsSet
  */
-function addUstensilsInDropdownList() {
-    const filterUstensilsList = document.querySelector('#filterUstensilsList');
-    filterUstensilsList.innerHTML = (``);
+function addItemsInDropdownList(listId, itemsSet) {
+    const currentList = document.querySelector(listId);
 
-    /** 
-     * transform ustensilsSet in array and sort
-     * @param {String} - ustensilItem
-     */
-    [...ustensilsSet].sort().forEach((ustensilItem) => {
-        const filterustensilItem = document.createElement('li');
-        filterustensilItem.className = 'filterDropdownItem';
-        filterustensilItem.innerText = `${ustensilItem}`;
-        filterUstensilsList.appendChild(filterustensilItem)
+    // resets the list
+    currentList.innerHTML = (``);
+
+    [...itemsSet].sort().forEach((item) => {
+        const currentListItem = document.createElement('li');
+        currentListItem.className = 'filterDropdownItem';
+        currentListItem.innerText = `${item}`;
+        currentList.appendChild(currentListItem);
     });
 }
 
 
-function deleteMainSearch() {
-    const deleteMainSearch = document.querySelector('#deleteMainSearch');
-    const mainSearchInput = document.querySelector('#mainSearchInput');
+function deleteByCloseBtn(idOfInput, idOfCloseSpan, clearSearchValue) {
+    const deleteSearch = document.querySelector(idOfCloseSpan);
+    const searchInput = document.querySelector(idOfInput);
 
-    deleteMainSearch.addEventListener('click', () => {
-        mainSearchInput.value = '';
+    deleteSearch.addEventListener('click', () => {
+        console.log('deleteByCloseBtn '+ idOfInput  + 'initial :', searchInput.value);
+        console.log('deleteByCloseBtn relatedSearchValue' + 'initial :', searchInput.value);
+        
+        searchInput.value = '';
+        clearSearchValue();
+        console.log('deleteByCloseBtn relatedSearchValue' + 'final :', searchInput.value);
+
+        console.log('deleteByCloseBtn '+ idOfInput  + 'final :', searchInput.value);
         refreshWithNewCriterias();
     });
 }
-deleteMainSearch();
+deleteByCloseBtn('#mainSearchInput','#deleteMainSearch', () => mainSearchValue ='');
+deleteByCloseBtn('#ingredientsSearchInput','#deleteIngredientsSearch', () => ingredientsSearchValue = '');
+deleteByCloseBtn('#appliancesSearchInput','#deleteAppliancesSearch', () => appliancesSearchValue = '');
+deleteByCloseBtn('#ustensilsSearchInput','#deleteUstensilsSearch', () => ustensilsSearchValue = '');
