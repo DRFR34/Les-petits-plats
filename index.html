@@ -24,7 +24,8 @@
         </h1>
         <div id="searchBox">
 
-            <label class="invisible" for="mainSearchInput">saisissez votre recherche, par exemple le nom d'une recette ou
+            <label class="invisible" for="mainSearchInput">saisissez votre recherche, par exemple le nom d'une recette
+                ou
                 d'un ingrédient</label>
             <input id="mainSearchInput" type="text" placeholder="Rechercher une recette, un ingrédient, ...">
             <span id="deleteMainSearch" class="deleteSearch">&#x2A2F;</span>
@@ -48,7 +49,7 @@
                         l'ingrédient recherché
                         <input type="text" id="ingredientsSearchInput" class="dropdownSearchInput"
                             placeholder="Rechercher">
-                        <span class="deleteSearch">&#x2A2F;</span>
+                        <span id="deleteIngredientsSearch" class="deleteSearch">&#x2A2F;</span>
                         <img class="filterSearchIcon" src="./Assets/icons/filterSearchIcon.svg" alt="">
                     </label>
                     <ul id="filterIngredientsList" class="filterDropdownList">
@@ -62,7 +63,7 @@
                         recherché
                         <input type="text" id="appliancesSearchInput" class="dropdownSearchInput"
                             placeholder="Rechercher">
-                        <span class="deleteSearch">&#x2A2F;</span>
+                        <span id="deleteAppliancesSearch" class="deleteSearch">&#x2A2F;</span>
                         <img class="filterSearchIcon" src="./Assets/icons/filterSearchIcon.svg" alt="">
                     </label>
                     <ul id="filterAppliancesList" class="filterDropdownList">
@@ -77,11 +78,11 @@
                         recherché
                         <input type="text" id="ustensilsSearchInput" class="dropdownSearchInput"
                             placeholder="Rechercher">
-                        <span class="deleteSearch">&#x2A2F;</span>
+                        <span id="deleteUstensilsSearch" class="deleteSearch">&#x2A2F;</span>
                         <img class="filterSearchIcon" src="./Assets/icons/filterSearchIcon.svg" alt="">
                     </label>
 
-                    <ul id="filterUstensilsList" class="filterDropdownList">                        
+                    <ul id="filterUstensilsList" class="filterDropdownList">
                     </ul>
                 </div>
 
@@ -116,18 +117,28 @@
             </div>
         </div>
 
-        <div id="recipesCardsGrid">            
+        <div id="recipesCardsGrid">
         </div>
         <div id="nothingFoundDiv">Aucune recette trouvée</div>
     </main>
 
 </body>
 
+<!-- == Scripts == -->
+
 <script src="./JS/index.js" defer></script>
+<script src="./JS/classes/recipeCard.js" defer></script>
+
 <script src="./JS/utils/mainFilter.js" defer></script>
 <script src="./JS/utils/tagsProcessing.js" defer></script>
 <script src="js/utils/normalizeString.js" defer></script>
 <script src="js/utils/functionalMainSearch.js" defer></script>
+<script src="js/utils/refreshWithNewCriterias.js" defer></script>
+<script src="js/utils/addItemInTagSet.js" defer></script>
+<script src="js/utils/clearDropdownsLists.js" defer></script>
+<script src="js/utils/DropDownSearchFiltering.js" defer></script>
+
+<!-- <script src="js/utils/ingredientsDropdownSearch.js" defer></script> -->
 <!-- <script src="drafts/nativeSearch.js" defer></script>
 <script src="drafts/functionalMainSearch.js" defer></script> -->
 <script src="data/recipes.js" defer></script>
