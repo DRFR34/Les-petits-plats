@@ -1,44 +1,27 @@
+// ! base v2
+// ! base v2
+// ! base v2
+// ! base v2
+
+/**
+ *  
+ */
+
 // eslint-disable-next-line no-unused-vars
-const functionalMainSearch = (mainSearchValue) => {
-    // mainSearchValue = normalizeString(mainSearchValue);
+function functionalMainSearch(mainSearchValue){
+        
 
-    const resultRecipesName = () => {
-        // return recipes.filter(recipe => recipe.name.includes(mainSearchValue));
-        return recipes.filter(recipe => normalizeString(recipe.name).includes(mainSearchValue));
-    }
+    mainSearchResultSet = recipes.filter(recipe => Object.values(recipe).some(property => normalizeString(
+        property.toString()).includes(mainSearchValue)
+     ));
+//  clear dropdowns lists
+clearDropdownsLists(ingredientsSet, appliancesSet, ustensilsSet);
 
-    const resultRecipesIngredients = () => {
-        return recipes.filter(recipe => 
-            // recipe.ingredients.some(ingredient => ingredient.ingredient.includes(mainSearchValue));
-            recipe.ingredients.some(ingredient => normalizeString(ingredient.ingredient).includes(mainSearchValue))
-        );
-    }
+InsertRecipeCardInDom(mainSearchResultSet);
+//  console.log('mainSearchResultSet :', mainSearchResultSet);
 
-    const resultRecipesDescription = () => {
-        // return recipes.filter(recipe => recipe.description.includes(mainSearchValue));
-        return recipes.filter(recipe => normalizeString(recipe.description).includes(mainSearchValue));
-    }
+currentSearchSet = mainSearchResultSet;
+        console.log('functionalMainSearch()-> mainSearchResultSet final:',mainSearchResultSet);
+        console.log('functionalMainSearch()-> currentSearchSet final:',currentSearchSet);
 
-    let mainSearchResult = [...resultRecipesName(), ...resultRecipesIngredients(), ...resultRecipesDescription()];    
-
-    if(mainSearchResult.length === 0){
-        ["#recipesCardsGrid", "#filterAppliancesList", "#filterIngredientsList", "#filterUstensilsList"].forEach(selector => {
-            const element = document.querySelector(selector);
-            if (element) {
-                element.innerHTML = 'Aucune recette trouvée';
-            }
-        });
-
-        console.log('Aucune recette trouvée');  
-    }
-
-    const jsonObject = mainSearchResult.map(JSON.stringify);        
-    const uniqueSet = new Set(jsonObject);
-    mainSearchResult = Array.from(uniqueSet).map(JSON.parse);    
-            // console.log('mainSearchResult :', mainSearchResult); 
-
-    //  reset of dropdowns lists
-    [ingredientsSet, appliancesSet, ustensilsSet].forEach(set => set.clear());
-
-    InsertRecipeCardInDom(mainSearchResult);
 }
