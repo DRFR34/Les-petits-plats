@@ -10,4 +10,5 @@
  */
 function clearDropdownsLists(ingredientsSet, appliancesSet, ustensilsSet) {
     [ingredientsSet, appliancesSet, ustensilsSet].forEach(set => set.clear());
+    
 }

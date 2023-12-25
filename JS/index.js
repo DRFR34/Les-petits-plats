@@ -10,6 +10,7 @@
 // * DOM elements
 
 const mainSearchInput = document.querySelector('#mainSearchInput');
+const searchIconBox = document.querySelector('#searchIconBox');
 const searchedWordsGrid = document.querySelector("#searchedWordsGrid");
 const ingredientsSearchInput = document.querySelector("#ingredientsSearchInput");
 const appliancesSearchInput = document.querySelector("#appliancesSearchInput");
@@ -27,8 +28,8 @@ let mainSearchValue = new String;
 let ingredientsSearchValue = new String;
 let appliancesSearchValue = new String;
 let ustensilsSearchValue = new String;
-let mainSearchResultSet = [];
-let currentSearchSet = [];
+let mainSearchResult = [];
+let currentSearch = [];
 
 
 /**
@@ -112,18 +113,18 @@ function deleteByCloseBtn(idOfInput, idOfCloseSpan, clearSearchValue) {
     const searchInput = document.querySelector(idOfInput);
 
     deleteSearch.addEventListener('click', () => {
-        console.log('deleteByCloseBtn '+ idOfInput  + 'initial :', searchInput.value);
+        console.log('deleteByCloseBtn ' + idOfInput + 'initial :', searchInput.value);
         console.log('deleteByCloseBtn relatedSearchValue' + 'initial :', searchInput.value);
-        
+
         searchInput.value = '';
         clearSearchValue();
         console.log('deleteByCloseBtn relatedSearchValue' + 'final :', searchInput.value);
 
-        console.log('deleteByCloseBtn '+ idOfInput  + 'final :', searchInput.value);
+        console.log('deleteByCloseBtn ' + idOfInput + 'final :', searchInput.value);
         refreshWithNewCriterias();
     });
 }
-deleteByCloseBtn('#mainSearchInput','#deleteMainSearch', () => mainSearchValue ='');
-deleteByCloseBtn('#ingredientsSearchInput','#deleteIngredientsSearch', () => ingredientsSearchValue = '');
-deleteByCloseBtn('#appliancesSearchInput','#deleteAppliancesSearch', () => appliancesSearchValue = '');
-deleteByCloseBtn('#ustensilsSearchInput','#deleteUstensilsSearch', () => ustensilsSearchValue = '');
+deleteByCloseBtn('#mainSearchInput', '#deleteMainSearch', () => mainSearchValue = '');
+deleteByCloseBtn('#ingredientsSearchInput', '#deleteIngredientsSearch', () => ingredientsSearchValue = '');
+deleteByCloseBtn('#appliancesSearchInput', '#deleteAppliancesSearch', () => appliancesSearchValue = '');
+deleteByCloseBtn('#ustensilsSearchInput', '#deleteUstensilsSearch', () => ustensilsSearchValue = '');
