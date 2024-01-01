@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 
 /** 
- * 
- * @param {String} clickedItem - extracted from text content of <li> element
+ * @function addItemInTagSet
+ * @description Extracts the text content of the cicked Li, and adds it in the Set selectedTagsSet
+ * @param {HTMLHtmlElement} clickedItem - <li> element
+ * @calledBy {function}  dropdownItemsSelecting() - @ /utils/tagsProcessing.js
  */
 function addItemInTagSet(clickedItem) {
-    selectedTagsSet.add(clickedItem.textContent);
-    console.log('addItemInTagSet() ->selectedTagsSet: ', selectedTagsSet);    
+    selectedTagsSet.add(clickedItem.textContent); 
 }
