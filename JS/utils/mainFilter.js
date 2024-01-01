@@ -7,18 +7,9 @@ mainSearchInput.addEventListener('input', () => {
     if (mainSearchInput.value.length < 3 && mainSearchInput.value.length > 0) {
         return
     }
-    console.log('mainSearchInput.value:', mainSearchInput.value);
     mainSearchValue = normalizeString(mainSearchInput.value);
-
-    //== nativeSearch.js
-    // nativeMainSearch(mainSearchValue);
-
-    //== funtionnalSearch.
-    // functionalMainSearch(mainSearchValue);
-
-   
+    console.log('Normalized mainSearchValue : ', mainSearchValue);
     refreshWithNewCriterias();
-
 });
 
 

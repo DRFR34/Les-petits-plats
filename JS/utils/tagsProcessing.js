@@ -14,9 +14,8 @@
 // eslint-disable-next-line no-unused-vars
 function dropdownItemsSelecting() {
     const filterDropdownItems = document.querySelectorAll('.filterDropdownItem');
-    // console.log('filterDropdownItems :', filterDropdownItems);
-
-    // Places Listeners on dropdowns' <li>s
+    
+    //  Places Listeners on dropdowns' <li>s
     filterDropdownItems.forEach(filterDropdownItem => {
         filterDropdownItem.addEventListener('click', (event) => {
             //  Store a reference to the clicked item
@@ -115,8 +114,6 @@ function closeTagListener() {
 
 function dropdownItemsDeselecting() {
     const DropdownItemsCloseBtns = document.querySelectorAll('.isFilterCriteria');
-    console.log('DropdownItemsCloseBtns :', DropdownItemsCloseBtns);
-
     DropdownItemsCloseBtns.forEach(DropdownItemCloseBtn => {
         DropdownItemCloseBtn.addEventListener('click', (event) => {
             //  Store a reference to the clicked item
@@ -141,10 +138,10 @@ function dropdownItemsDeselecting() {
 function refreshItemListOrder(filterDropdownItem) {
     let parentUl = filterDropdownItem.parentElement.querySelectorAll('.filterDropdownItem');
     let parentUlArray = Array.from(parentUl);
-    // console.log('parentUl :', parentUl);
-    // console.log('parentUlArray :', parentUlArray);
+
     //  Sort the items
     parentUlArray.sort((a, b) => {
+        
         //  Place items with 'isFilterCriteria' class at the top
         if (a.classList.contains('isFilterCriteria')) return -1;
         if (b.classList.contains('isFilterCriteria')) return 1;

@@ -1,10 +1,10 @@
 
 
+// eslint-disable-next-line no-unused-vars
 function refreshWithNewCriterias() {
     mainSearchValue = normalizeString(mainSearchInput.value);
 
     functionalMainSearch(mainSearchValue);
-    console.log('refreshWithNewCriterias->currentSearch initial:', currentSearch);
 
     if (selectedTagsSet.size !== 0) {
         //  Converts selectedTagsSet in Array
@@ -18,7 +18,6 @@ function refreshWithNewCriterias() {
             );
         });
 
-        console.log('refreshWithNewCriterias->currentSearch final:', currentSearch);
     }
 
 
