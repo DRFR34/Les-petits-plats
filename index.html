@@ -7,7 +7,6 @@
     <title>Les petits plats</title>
     <link rel="icon" type="image/x-icon" href="./Assets/favicon-32x32.png">
     <link rel="icon" href="./Assets/icons/favicon-32x32.png" />
-    <!-- <script src="https://kit.fontawesome.com/64a15eb5cd.js"></script>  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -45,7 +44,7 @@
                     <div class="dropdownSymbol">></div>
                     <h2>Ingrédients</h2>
 
-                    <label for="#ingredientsSearchInput" class="invisible filterSearchInputLabel"> saisissez
+                    <label for="ingredientsSearchInput" class="invisible filterSearchInputLabel"> saisissez
                         l'ingrédient recherché
                         <input type="text" id="ingredientsSearchInput" class="dropdownSearchInput"
                             placeholder="Rechercher">
@@ -59,7 +58,7 @@
                     <div class="dropdownSymbol">></div>
                     <h2>Appareils</h2>
 
-                    <label for="#appliancesSearchInput" class="invisible filterSearchInputLabel"> saisissez l'ingrédient
+                    <label for="appliancesSearchInput" class="invisible filterSearchInputLabel"> saisissez l'ingrédient
                         recherché
                         <input type="text" id="appliancesSearchInput" class="dropdownSearchInput"
                             placeholder="Rechercher">
@@ -70,11 +69,10 @@
                     </ul>
                 </div>
                 <div id="ustensilsDropdown" class="filterDropdown">
-                    <!-- <div class="dropdownSymbol">&#10217;</div> -->
                     <div class="dropdownSymbol">></div>
                     <h2>Ustensiles</h2>
 
-                    <label for="#ustensilsSearchInput" class="invisible filterSearchInputLabel"> saisissez l'ingrédient
+                    <label for="ustensilsSearchInput" class="invisible filterSearchInputLabel"> saisissez l'ingrédient
                         recherché
                         <input type="text" id="ustensilsSearchInput" class="dropdownSearchInput"
                             placeholder="Rechercher">
@@ -94,26 +92,6 @@
             </div>
 
             <div id="searchedWordsGrid">
-                <!-- <div class="searchedWordTag">
-                    <span class="searchedWord">MotClé 1</span>
-                    <span class="closeOrDeleteTag">&#x2A2F;</span>
-                </div>
-                <div class="searchedWordTag">
-                    <span class="searchedWord">MotClé 2</span>
-                    <span class="closeOrDeleteTag">&#x2A2F;</span>
-                </div>
-                <div class="searchedWordTag">
-                    <span class="searchedWord">MotClé 3</span>
-                    <span class="closeOrDeleteTag">&#x2A2F;</span>
-                </div>
-                <div class="searchedWordTag">
-                    <span class="searchedWord">MotClé 4</span>
-                    <span class="closeOrDeleteTag">&#x2A2F;</span>
-                </div>
-                <div class="searchedWordTag">
-                    <span class="searchedWord">MotClé 5</span>
-                    <span class="closeOrDeleteTag">&#x2A2F;</span>
-                </div> -->
             </div>
         </div>
 
@@ -122,28 +100,21 @@
         <div id="nothingFoundDiv">Aucune recette trouvée</div>
     </main>
 
+    <!-- == Scripts == -->
+
+    <script src="./JS/index.js" defer></script>
+    <script src="./JS/classes/recipeCard.js" defer></script>
+    <script src="./JS/utils/mainFilter.js" defer></script>
+    <script src="./JS/utils/tagsProcessing.js" defer></script>
+    <script src="./JS/utils/normalizeString.js" defer></script>
+    <script src="./JS/utils/functionalMainSearch.js" defer></script>
+    <script src="./JS/utils/refreshWithNewCriterias.js" defer></script>
+    <script src="./JS/utils/addItemInTagSet.js" defer></script>
+    <script src="./JS/utils/clearDropdownsLists.js" defer></script>
+    <script src="./JS/utils/DropDownSearchFiltering.js" defer></script>
+    <script src="./JS/utils/miscListeners.js" defer></script>
+    <script src="data/recipes.js" defer></script>
+
 </body>
-
-<!-- == Scripts == -->
-
-<script src="./JS/index.js" defer></script>
-<script src="./JS/classes/recipeCard.js" defer></script>
-
-<script src="./JS/utils/mainFilter.js" defer></script>
-<script src="./JS/utils/tagsProcessing.js" defer></script>
-<script src="./JS/utils/normalizeString.js" defer></script>
-<script src="./JS/utils/functionalMainSearch.js" defer></script>
-<script src="./JS/utils/refreshWithNewCriterias.js" defer></script>
-<script src="./JS/utils/addItemInTagSet.js" defer></script>
-<script src="./JS/utils/clearDropdownsLists.js" defer></script>
-<script src="./JS/utils/DropDownSearchFiltering.js" defer></script>
-<script src="./JS/utils/miscListeners.js" defer></script>
-
-<!-- <script src="js/utils/ingredientsDropdownSearch.js" defer></script> -->
-<!-- <script src="drafts/nativeSearch.js" defer></script>
-<script src="drafts/functionalMainSearch.js" defer></script> -->
-<script src="data/recipes.js" defer></script>
-
-<!-- <script src="data/recipes.js" defer></script> -->
 
 </html>
