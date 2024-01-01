@@ -166,7 +166,7 @@
 }
 
 .foundRecipesCount span {
-    font-family: var(----font-fam-secondary);
+    font-family: var(--font-fam-secondary);
     font-size: 21px;
     line-height: 56px;
 }

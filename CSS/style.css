@@ -12,7 +12,7 @@
 
     /* -- fonts */
     --font-fam-Main : 'Manrope', sans-serif;
-    ----font-fam-secondary : 'Anton',sans-serif; 
+    --font-fam-secondary : 'Anton',sans-serif; 
     --font-sz-M : 14px;
     --font-sz-S: 12px;
     --font-sz-XS: 10px;
@@ -50,7 +50,7 @@ main {
 
 h1, h2 {
     /* font-family: 'Anton',sans-serif;     */
-    font-family: var(----font-fam-secondary);
+    font-family: var(--font-fam-secondary);
 }
 h1, h3 {
     text-transform: uppercase;
