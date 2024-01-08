@@ -6,7 +6,7 @@
  * @description Refreshes the search results based on each new criteria. It filters the recipes based on selected tags and search values for ingredients, appliances, and utensils, clears the dropdown lists, inserts the recipe card in the DOM, and updates the selected dropdown items.
  * @param {none} 
  * @calls {function} normalizeString - Normalizes a string by converting it to lowercase and removing special characters.
- * @calls {function} nativeMainSearch - Performs the main search functionality.
+ * @calls {function} functionalMainSearch - Performs the main search functionality.
  * @calls {function} dropdownIngredientsFiltering - Filters the recipes based on the ingredients search value.
  * @calls {function} dropdownAppliancesFiltering - Filters the recipes based on the appliances search value.
  * @calls {function} dropdownUstensilsFiltering - Filters the recipes based on the utensils search value.
@@ -23,13 +23,13 @@
 function refreshWithNewCriterias() {
     mainSearchValue = normalizeString(mainSearchInput.value);
 
-    nativeMainSearch(mainSearchValue);
+    functionalMainSearch(mainSearchValue);
 
     if (selectedTagsSet.size !== 0) {
         //  Converts selectedTagsSet in Array in the aim to use forEach
         let selectedTagsArray = [...selectedTagsSet];
 
-        selectedTagsArray.forEach(tag => {            
+        selectedTagsArray.forEach(tag => {
             currentSearch = currentSearch.filter(recipe =>
                 recipe.ingredients.some(ingredient => normalizeString(ingredient.ingredient) === normalizeString(tag)) ||
                 normalizeString(recipe.appliance) === normalizeString(tag) ||
@@ -39,7 +39,7 @@ function refreshWithNewCriterias() {
 
     }
 
-    currentSearch.length === 0 ? nothingFoundDiv.classList.add('isVisible'): nothingFoundDiv.classList.remove('isVisible');
+    currentSearch.length === 0 ? nothingFoundDiv.classList.add('isVisible') : nothingFoundDiv.classList.remove('isVisible');
     // clears the 3 Sets, used by the RecipeCard class to build cards display
     clearDropdownsLists(ingredientsSet, appliancesSet, ustensilsSet);
 
