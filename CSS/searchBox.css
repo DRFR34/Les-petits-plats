@@ -8,9 +8,36 @@
 
 }
 
-#searchBox .deleteSearch {
+/* ! modif */
+/* #searchBox .searchDeleteBtn {
+    display: none;
     position: absolute;
-    /* top: 50%; */
+    right: 80px;
+    cursor: pointer;
+    font-weight: 100;
+    font-size: 40px;
+    line-height: 72px;
+    color: var(--color-semi-dark);
+} */
+
+/* #mainSearchDeleteBtn {
+    display: none;
+    position: absolute;
+    right: 80px;
+    cursor: pointer;
+    font-weight: 100;
+    font-size: 40px;
+    line-height: 72px;
+    color: var(--color-semi-dark);
+} */
+/* ! Ajout */
+#mainSearchDeleteBtn {
+    display: none;
+}
+
+#mainSearchDeleteBtn.isVisible {
+    display: inline-block;
+    position: absolute;
     right: 80px;
     cursor: pointer;
     font-weight: 100;
@@ -18,6 +45,22 @@
     line-height: 72px;
     color: var(--color-semi-dark);
 }
+
+
+/* #searchBox .searchDeleteBtn.isVisible{
+   
+   position: absolute;
+   
+   right: 80px;
+   cursor: pointer;
+   font-weight: 100;
+   font-size: 40px;
+   line-height: 72px;
+   color: var(--color-semi-dark);
+} */
+
+
+
 
 #mainSearchInput {
     width: 954px;
@@ -37,7 +80,7 @@
     width: 52px;
     height: 52px;
     border-radius: 10px;
-    background-color: var(--color-darker);   
+    background-color: var(--color-darker);
 }
 
 #searchIconBox:hover {
@@ -59,5 +102,5 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50% , -50%);
+    transform: translate(-50%, -50%);
 }

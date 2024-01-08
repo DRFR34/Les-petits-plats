@@ -12,7 +12,7 @@
 
     /* -- fonts */
     --font-fam-Main : 'Manrope', sans-serif;
-    --font-fam-secondary : 'Anton',sans-serif; 
+    ----font-fam-secondary : 'Anton',sans-serif; 
     --font-sz-M : 14px;
     --font-sz-S: 12px;
     --font-sz-XS: 10px;
@@ -44,13 +44,13 @@ body {
 }
 
 main {
-    padding: 0 100px 40px;
+    padding: 0 100px 300px;
     background-color: var(--color-bg-light);
 }
 
 h1, h2 {
     /* font-family: 'Anton',sans-serif;     */
-    font-family: var(--font-fam-secondary);
+    font-family: var(----font-fam-secondary);
 }
 h1, h3 {
     text-transform: uppercase;
@@ -95,6 +95,7 @@ h1 {
 
 #nothingFoundDiv.isVisible{
     display: block;
+    padding: 70px;
     text-align: center;
     font-size: 50px;
 }
