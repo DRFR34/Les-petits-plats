@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les petits plats</title>
     <link rel="icon" type="image/x-icon" href="./Assets/favicon-32x32.png">
-    <link rel="icon" href="./Assets/icons/favicon-32x32.png">
+    <link rel="icon" href="./Assets/icons/favicon-32x32.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -16,39 +16,36 @@
 </head>
 
 <body>
+    
     <header>
         <img id="logo" src="./Assets/logo.png" alt="Logo Les petits plats">
         <h1 id="heroH1">
             cherchez parmi plus de 1500 recettes <br> du quotidien, simples et délicieuses
         </h1>
         <div id="searchBox">
-
             <label class="invisible" for="mainSearchInput">saisissez votre recherche, par exemple le nom d'une recette
                 ou
                 d'un ingrédient</label>
             <input id="mainSearchInput" type="text" placeholder="Rechercher une recette, un ingrédient, ...">
-            <span id="deleteMainSearch" class="deleteSearch">&#x2A2F;</span>
+            <span id="mainSearchDeleteBtn" class="searchDeleteBtn">&#x2A2F;</span>
             <div id="searchIconBox">
                 <img id="searchIconWhite" src="./Assets/icons/searchIconWhite.svg" alt="">
                 <img id="searchIconBlack" src="./Assets/icons/searchIconBlack.svg" alt="">
             </div>
-
         </div>
     </header>
+
     <main>
         <div id="filtersSection">
-
             <div id="filtersBanner">
-
                 <div id="ingredientsDropdown" class="filterDropdown">
                     <div class="dropdownSymbol">></div>
                     <h2>Ingrédients</h2>
-
                     <label for="ingredientsSearchInput" class="invisible filterSearchInputLabel"> saisissez
                         l'ingrédient recherché
                         <input type="text" id="ingredientsSearchInput" class="dropdownSearchInput"
                             placeholder="Rechercher">
-                        <span id="deleteIngredientsSearch" class="deleteSearch">&#x2A2F;</span>
+                        <span id="ingredientsSearchDeleteBtn" class="searchDeleteBtn">&#x2A2F;</span>
                         <img class="filterSearchIcon" src="./Assets/icons/filterSearchIcon.svg" alt="">
                     </label>
                     <ul id="filterIngredientsList" class="filterDropdownList">
@@ -57,12 +54,11 @@
                 <div id="appliancesDropdown" class="filterDropdown">
                     <div class="dropdownSymbol">></div>
                     <h2>Appareils</h2>
-
                     <label for="appliancesSearchInput" class="invisible filterSearchInputLabel"> saisissez l'ingrédient
                         recherché
                         <input type="text" id="appliancesSearchInput" class="dropdownSearchInput"
                             placeholder="Rechercher">
-                        <span id="deleteAppliancesSearch" class="deleteSearch">&#x2A2F;</span>
+                        <span id="appliancesSearchDeleteBtn" class="searchDeleteBtn">&#x2A2F;</span>
                         <img class="filterSearchIcon" src="./Assets/icons/filterSearchIcon.svg" alt="">
                     </label>
                     <ul id="filterAppliancesList" class="filterDropdownList">
@@ -76,45 +72,46 @@
                         recherché
                         <input type="text" id="ustensilsSearchInput" class="dropdownSearchInput"
                             placeholder="Rechercher">
-                        <span id="deleteUstensilsSearch" class="deleteSearch">&#x2A2F;</span>
+                        <span id="ustensilsSearchDeleteBtn" class="searchDeleteBtn">&#x2A2F;</span>
                         <img class="filterSearchIcon" src="./Assets/icons/filterSearchIcon.svg" alt="">
                     </label>
 
                     <ul id="filterUstensilsList" class="filterDropdownList">
                     </ul>
                 </div>
-
-
                 <div class="foundRecipesCount">
                     <span class="recipesNb"></span>
                     <span>recettes</span>
                 </div>
             </div>
-
             <div id="searchedWordsGrid">
             </div>
         </div>
 
         <div id="recipesCardsGrid">
         </div>
-        <div id="nothingFoundDiv">Aucune recette trouvée</div>
+        <div id="nothingFoundDiv">Nous sommes désolés, <br> aucune recette ne correspond à votre recherche. </div>
     </main>
 
+        
     <!-- == Scripts == -->
 
     <script src="./JS/index.js" defer></script>
+    <script src="data/recipes.js" defer></script>
     <script src="./JS/classes/recipeCard.js" defer></script>
     <script src="./JS/utils/mainFilter.js" defer></script>
     <script src="./JS/utils/tagsProcessing.js" defer></script>
-    <script src="./JS/utils/normalizeString.js" defer></script>
-    <script src="./JS/utils/functionalMainSearch.js" defer></script>
+    <script src="./JS/utils/dropdownsItemsProcessing.js" defer></script>
+    <script src="./JS/utils/stringsProcessing.js" defer></script>
+    <!-- <script src="./JS/utils/functionalMainSearch.js" defer></script> -->
+    <script src="./JS/utils/nativeMainSearch.js" defer></script>
     <script src="./JS/utils/refreshWithNewCriterias.js" defer></script>
     <script src="./JS/utils/addItemInTagSet.js" defer></script>
     <script src="./JS/utils/clearDropdownsLists.js" defer></script>
     <script src="./JS/utils/DropDownSearchFiltering.js" defer></script>
     <script src="./JS/utils/miscListeners.js" defer></script>
-    <script src="data/recipes.js" defer></script>
 
 </body>
+
 
 </html>
