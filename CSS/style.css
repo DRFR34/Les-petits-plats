@@ -49,7 +49,6 @@ main {
 }
 
 h1, h2 {
-    /* font-family: 'Anton',sans-serif;     */
     font-family: var(----font-fam-secondary);
 }
 h1, h3 {
@@ -66,22 +65,30 @@ h1, h3 {
 
 header {
     position: relative;
+    margin: auto;
     height: 668px;
-    background-image: url(../Assets/headerImg.png) ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 50px 70px;
 }
 
 
 #logo {
+    position: absolute;
+    top: 50px;
+    left: 70px;
     width: 207px;
     height: 26px;
 
 
+#headerImg {
+    object-fit: cover;
+}
+
 }
 
 h1 {
+    position: absolute;
+    top: 84px;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 160px 0 30px 0 ;
     font-size: 44px;
     color: var(--color-active);
